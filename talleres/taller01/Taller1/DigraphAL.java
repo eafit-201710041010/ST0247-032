@@ -18,19 +18,29 @@ public class DigraphAL extends Digraph {
 
     public void addArc(int source, int destination, int weight) {
         ArrayList a = lista.get(source);
-        a.add(destination, weight);
-        // complete...
-        // recuerde: grafo dirigido!
+        a.add(new Pair(destination, weight));
     }
 
     public ArrayList<Integer> getSuccessors(int vertex) {
-        // compl        ete...
-        // recuerde: null si no hay!
-        return null;
+        ArrayList a = lista.get(vertex);
+        if(a.isEmpty()){
+            return null;
+        }
+        return a;
     }
 
     public int getWeight(int source, int destination) {
-        // complete...
+        ArrayList a = lista.get(source);
+        if(a.isEmpty() || destination > a.size()){
+            return 0;
+        }
+        
+        for(int i = 0; i < a.size(); i++){
+            Pair par = (Pair)a.get(i);
+            if ((int)(par.getFirst()) == destination){
+                return (int)par.getSecond();
+            }
+        }
         return 0;
     }
 
