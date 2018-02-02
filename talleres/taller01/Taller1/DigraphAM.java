@@ -21,7 +21,10 @@ public class DigraphAM extends Digraph {
 	}
 
 	public void addArc(int source, int destination, int weight) {
-		matriz[source][destination]=weight;
+	    if(source < matriz.length && destination < matriz.length){
+	        matriz[source][destination]=weight;
+	       }
+		
 	}
 
 	public ArrayList<Integer> getSuccessors(int vertex) {
@@ -35,7 +38,12 @@ public class DigraphAM extends Digraph {
 	}
 
 	public int getWeight(int source, int destination) {
-		return matriz[source][destination];
+	    if(source < matriz.length && destination < matriz.length){
+	        return matriz[source][destination];
+	       }else{
+	       return 0;
+	   }
+		
 	}
 
 }
