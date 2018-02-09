@@ -59,7 +59,7 @@ public class Taller2 {
 
     public static boolean esValido(int[] queens) {
         for(int i = 0; i < queens.length; i++){
-            for(int j = i+1; j < queens.length-1; j++){
+            for(int j = i+1; j < queens.length; j++){
                 if(Math.abs(queens[i] - queens[j]) == Math.abs(i - j)){
                     return false;
                 }
