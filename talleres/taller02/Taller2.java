@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 /**
  * Clase en la cual se implementan los metodos del Taller de Clase #2
+ * Realizado por: Juan Jose Parra y Luisa Maria Vasquez
  * 
  * @author Mauricio Toro, Mateo Agudelo
  */
