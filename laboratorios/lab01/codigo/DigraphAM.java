@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 /**
- * Esta clase es una implementaciÃ³n de un digrafo usando matrices de adyacencia
+ * Esta clase es una implementación de un digrafo usando matrices de adyacencia
  * 
  * @author Juan Jose Parra y Luisa Maria Vasquez
  * @version 18/02/2018
@@ -13,7 +13,7 @@ public class DigraphAM extends Graph
     int[][] matriz;
    /**
     * Constructor de DigraphAM que crea e inicializa la matriz de adyacencia
-    * @param size TamaÃ±o de la matriz a construir
+    * @param size Tamaño de la matriz a construir
     */
    public DigraphAM(int size)
    {
@@ -39,7 +39,7 @@ public class DigraphAM extends Graph
    
     
     /**
-    * Metodo que aÃ±ade un arco al grafo
+    * Metodo que añade un arco al grafo
     * @param source Nodo de salida
     * @param destination Nodo de llegada
     * @param weight Peso del arco

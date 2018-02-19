@@ -1,4 +1,4 @@
-    import java.util.ArrayList;
+import java.util.ArrayList;
     import java.util.Arrays;
     import java.io.File;
     import java.util.Scanner;
@@ -74,7 +74,7 @@
          }
      
        /**
-        * C√≥digo para dibujar el grafo en GraphViz
+        * CÛdigo para dibujar el grafo en GraphViz
         * @param g Grafo a dibujar
         */
          public static void dibujarGrafo(Graph g)
@@ -92,7 +92,7 @@
          }
          
          /**
-          * Metodo que determina cual es el vertice del grafo con mas sucesores comparando el tama√±o del ArrayList 
+          * Metodo que determina cual es el vertice del grafo con mas sucesores comparando el tamaÒo del ArrayList 
           * obtenido al llamar el metodo getSuccessors.
           * @param g Grafo en el que se buscara el vertice con mas sucesores.
           * @return Vertice con mas sucesores.
@@ -125,7 +125,7 @@
             
             
          /**
-          * M√©todo que prueba que el algoritmo de Dijsktra funciona con las dos implementaciones de grafos (Matrices y listas de adyancencia"
+          * MÈtodo que prueba que el algoritmo de Dijsktra funciona con las dos implementaciones de grafos (Matrices y listas de adyancencia"
           */
        public static void pruebaDijsktra(){
               DigraphAL dgal = new DigraphAL(5);
@@ -157,7 +157,7 @@
         }
          
          /**
-          * M√©todo que prueba que el algoritmo implementado para saber que nodo tiene m√°s sucesores funciona con las dos implementaciones de grafos
+          * MÈtodo que prueba que el algoritmo implementado para saber que nodo tiene m·s sucesores funciona con las dos implementaciones de grafos
           * (Matrices y listas de adyancencia"
           */
        public static void pruebaMasSucesores(){

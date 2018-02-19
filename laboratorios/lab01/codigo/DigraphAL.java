@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.*;
 /**
- * Esta clase es una implementaciÃ³n de un digrafo usando listas de adyacencia
+ * Esta clase es una implementación de un digrafo usando listas de adyacencia
  * 
  * @author Juan Jose Parra y Luisa Maria Vasquez
  * @version 18/02/2018
@@ -15,7 +15,7 @@ public class DigraphAL extends Graph
    
    /**
     * Constructor de DigraphAL que crea e inicializa la lista de adyacencia
-    * @param size TamaÃ±o de la lista a construir
+    * @param size Tamaño de la lista a construir
     */
    public DigraphAL(int size)
    {
@@ -27,7 +27,7 @@ public class DigraphAL extends Graph
    }
    
    /**
-    * Metodo que aÃ±ade un arco al grafo
+    * Metodo que añade un arco al grafo
     * @param source Nodo de salida
     * @param destination Nodo de llegada
     * @param weight Peso del arco
