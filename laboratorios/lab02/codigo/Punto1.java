@@ -7,16 +7,16 @@
  */
 public class Punto1
 {
-   /**
-    * Método que imprime un tablero con los espacios ocupados por reinas 
-    * @param tablero Tablero a imprimir
-    */
+    /**
+     * Método que imprime un tablero con los espacios ocupados por reinas 
+     * @param tablero Tablero a imprimir
+     */
     public static void imprimirTablero(int[] tablero) {
         int n = tablero.length;
         System.out.print(" ");
         for (int i = 0; i < n; ++i)
             System.out.print(i + " ");
-            System.out.println();
+        System.out.println();
         for (int i = 0; i < n; ++i) {
             System.out.print(i + " ");
             for (int j = 0; j < n; ++j)
@@ -39,10 +39,10 @@ public class Punto1
                 }
             }
         }
-        imprimirTablero(queens);
+        //imprimirTablero(queens);
         return true;
     }
-    
+
     /**
      * Metodo que genera tableros posibles por fuerza bruta y cuenta los válidos para retornar la cantidad de soluciones posibles
      * @param pos Segunda parte del tablero
@@ -67,20 +67,24 @@ public class Punto1
         }
         return cuenta[0];
     }
-    
+
     /**
      * Método que recibe un tamaño de tablero y determina cuantas soluciones hay para el problema de las n reinas en este
      * @param n Tamaño del tablero
      * @return Cantidad de soluciones a las n reinas
      */
     public static int queens(int n) {
+        long startTime = System.currentTimeMillis();
         int[] cuenta = {0};
         int[] queens = new int[n];
         String s = "";
         for(int i = 0; i < n; i++){
             s += i;
         }
-       return queens("",s,n,queens, cuenta);
-       
+        int respuesta = queens("",s,n,queens, cuenta);
+        long tiempoDeBusqueda = System.currentTimeMillis() - startTime;
+        
+        System.out.println(tiempoDeBusqueda);
+        return respuesta;
     }
 }
