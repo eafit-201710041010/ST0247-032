@@ -68,7 +68,7 @@ public class nreinasTableroRoto
           if(puedoPonerReina(r, i, queens, huecos)){
               queens[r] = i;
               if(r ==c-1){
-                    imprimirTablero(queens);
+                    //imprimirTablero(queens);
                     sol++;
               }else{
                     nReinas(r+1,c,queens, huecos);

@@ -11,15 +11,15 @@ public class EjercicioLinea
     public static void leer(){
         System.out.print(" ");
         Scanner sc=new Scanner(System.in);
-        int tamaño=sc.nextInt();
+        int tamano=sc.nextInt();
         ArrayList<Integer> casos=new ArrayList<Integer>();
-        while(tamaño!=0){
-            int[] huecos =new int[tamaño];
+        while(tamano!=0){
+            int[] huecos =new int[tamano];
             for(int i =0;i<huecos.length;i++){
                 huecos[i]=-1;
             }
             String useless=sc.nextLine();
-            for(int i =0;i<tamaño;i++){
+            for(int i =0;i<tamano;i++){
                 String a = sc.nextLine();
                 for(int j =0;j<a.length();j++){
                     if(a.charAt(j)=='*'){
@@ -28,8 +28,8 @@ public class EjercicioLinea
                     }    
                 } 
             }
-            casos.add(queens(tamaño,huecos));
-            tamaño=sc.nextInt();
+            casos.add(queens(tamano,huecos));
+            tamano=sc.nextInt();
         }
 
         for(int i =0;i<casos.size();i++){
