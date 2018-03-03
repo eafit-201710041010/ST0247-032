@@ -3,10 +3,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 /**
- * Write a description of class nreinasTableroMalo here.
+ * Solucion al ejercicio en linea
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Juan Jose Parra , Luisa Maria Vasquez
+ * @version 25/02/2018
  */
 public class nreinasTableroRoto
 {
