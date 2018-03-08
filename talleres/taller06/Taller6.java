@@ -1,14 +1,29 @@
-import java.util.*;
+import java.util.ArrayList;
 /**
- * Clase en la cual se implementan los metodos del Taller de Clase #6
+ * Write a description of class s here.
  * 
- * @author Mauricio Toro, Mateo Agudelo
+ * @author (your name) 
+ * @version (a version number or a date)
  */
-public class Taller6 {
+public class Taller6
+{
+    public static void main (String[] args){
+        int[] denominaciones = {500, 300, 200, 50};
+        cambioGreedy(1000,denominaciones);
+    }
 
-	
+    public static int[] cambioGreedy(int n, int[] denominaciones) {
+        int [] devuelta = new int [denominaciones.length];
+        for(int i = 0; i < denominaciones.length; i++){
+            while(n >= denominaciones[i]){
+                n -= denominaciones[i];
+                devuelta[i]++;
+            }
+        }
+        if (n != 0) return null;
+        return devuelta;
+    }
 
-	
     public static int recorrido(Digraph g) {
         boolean[] visitados =new boolean[g.size()];
         return recorrido(g,visitados,0,0);
@@ -30,5 +45,4 @@ public class Taller6 {
             return suma+ recorrido(g,visitados,minimo,suma);
         }
     }
-
 }
