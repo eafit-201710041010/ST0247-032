@@ -26,12 +26,12 @@ public class Taller6
 
     public static int recorrido(Digraph g) {
         boolean[] visitados =new boolean[g.size()];
-        return recorrido(g,visitados,0,0);
+        return recorrido(g,visitados,0);
     }
 
-    public static int recorrido(Digraph g, boolean[] visitados,int v,int suma) {
+    public static int recorrido(Digraph g, boolean[] visitados,int v) {
 
-        if(v>=g.size()){
+        if(v==g.size()){
             return 0;
         }else{
             visitados[v]=true;
@@ -42,7 +42,7 @@ public class Taller6
                     minimo=i;
                 }
             }
-            return suma+ recorrido(g,visitados,minimo,suma);
+            return g.getWeight(v,minimo)+ recorrido(g,visitados,minimo);
         }
     }
 }
