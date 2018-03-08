@@ -6,26 +6,29 @@ import java.util.*;
  */
 public class Taller6 {
 
-	public static int[] cambioGreedy(int n, int[] denominaciones) {
-		return null;
-	}
-
-	public static int recorrido(Digraph g) {
-	    boolean[] visitados =new boolean[g.size()];
-		return recorrido(g,visitados,0,0);
-	}
 	
-	public static int recorrido(Digraph g, boolean[] visitados,int v,int suma) {
-	    visitados[v]=true;
-	    ArrayList<Integer> sucesores= g.getSuccessors(v);
-	    int minimo=g.size();
-	    for(int i =0;i<sucesores.size();i++){
-	        if(sucesores.get(i)<minimo && visitados[i]==false){
-	            minimo=i;
-	           }
-	    }
-		
-	    return suma+ recorrido(g,visitados,minimo,suma);
-	}
+
+	
+    public static int recorrido(Digraph g) {
+        boolean[] visitados =new boolean[g.size()];
+        return recorrido(g,visitados,0,0);
+    }
+
+    public static int recorrido(Digraph g, boolean[] visitados,int v,int suma) {
+
+        if(v>=g.size()){
+            return 0;
+        }else{
+            visitados[v]=true;
+            ArrayList<Integer> sucesores= g.getSuccessors(v);
+            int minimo=g.size();
+            for(int i =0;i<sucesores.size();i++){
+                if(sucesores.get(i)<minimo && visitados[i]==false){
+                    minimo=i;
+                }
+            }
+            return suma+ recorrido(g,visitados,minimo,suma);
+        }
+    }
 
 }
