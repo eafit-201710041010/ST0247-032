@@ -50,11 +50,24 @@ public class EjercicioEnLinea
                 visitados[origen] = true;
                 peso += g.getWeight(origen, (int)sucesores.get(i));
                 if(peso <= pesoMin){
-                    camino = camino * 10 + (int)sucesores.get(i);
+                    if((int)sucesores.get(i) >= 100){
+                        camino = camino * 1000 + (int)sucesores.get(i);
+                    } else if ((int)sucesores.get(i) >= 10){
+                        camino = camino * 100 + (int)sucesores.get(i);
+                    } else {
+                        camino = camino * 10 + (int)sucesores.get(i);
+                    }
+                    
                     recorrer(g, (int)sucesores.get(i), destino, peso, camino);
                 }
                 peso -= g.getWeight(origen, (int)sucesores.get(i));
-                camino /= 10;
+                if((int)sucesores.get(i) >= 100){
+                    camino /= 1000;
+                } else if ((int)sucesores.get(i) >= 10){
+                    camino /= 100;
+                }else{
+                    camino /= 10;
+                }
                 visitados[origen] = false;
             }
         }
