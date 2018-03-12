@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
 /**
- * Write a description of class Punto6 here.
+ *Solucion al punto 1.6 del Lab 3
  * 
  * @author Juan Jose Parra , Luisa Maria Vasquez
  * @version 10/03/2018
@@ -15,6 +15,13 @@ public class Punto6
         recorrer(g, origen, destino, 0, origen);
     }
     
+    /**
+     * Método que recorre el grafo y determina el camino ams corto entre un nodo y otro
+     * @param g Grafo a recorrer
+     * @param origen Nodo origen 
+     * @param destino Nodo destino
+     * @param camino Nodo 
+     */
     private void recorrer(Digraph g, int origen, int destino, int peso, int camino){
         if(visitados[origen]){
             return;
