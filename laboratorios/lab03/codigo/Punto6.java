@@ -11,16 +11,24 @@ public class Punto6
     boolean [] visitados;
     int pesoMin = 106;
     int caminoFinal = 0;
+    
+     /**
+     * Método que recorre el grafo y determina el camino mas corto entre un nodo y otro
+     * @param g Grafo a recorrer
+     * @param origen Nodo origen 
+     * @param destino Nodo destino
+     */
     public void recorrer(Digraph g, int origen, int destino){
         recorrer(g, origen, destino, 0, origen);
     }
     
     /**
-     * Método que recorre el grafo y determina el camino ams corto entre un nodo y otro
+     * Método que recorre el grafo y determina el camino mas corto entre un nodo y otro
      * @param g Grafo a recorrer
      * @param origen Nodo origen 
      * @param destino Nodo destino
-     * @param camino Nodo 
+     * @param peso Peso total del camino 
+     * @param camino Nodos recorridos hasta el momento
      */
     private void recorrer(Digraph g, int origen, int destino, int peso, int camino){
         if(visitados[origen]){
