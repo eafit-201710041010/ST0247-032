@@ -8,7 +8,7 @@ import java.util.*;
 public class nQueens {
 
     /**
-     * Método que dtermina si es posible o no poner una reina en determinada posición
+     * Método que determina si es posible o no poner una reina en determinada posición
      * @param r Fila donde se pondrá la reina
      * @param c Columna donde se pondrá la reina
      * @param tablero Tablero a revisar
