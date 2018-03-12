@@ -14,14 +14,14 @@ public class EjercicioEnLinea
     int pesoMin = 106;
     int nodos;
     int caminoFinal = 0;
-    public DigraphAM inputManager() throws IOException{
+    public DigraphAL inputManager() throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String entrada = br.readLine();
         String[] uno = entrada.split(" ");
         nodos = Integer.parseInt(uno[0]);
         int arcos = Integer.parseInt(uno[1]);
         visitados = new boolean[arcos];
-        DigraphAM g = new DigraphAM(arcos);
+        DigraphAL g = new DigraphAL(arcos);
         for (int i = 0; i < arcos; i++){
             entrada = br.readLine();
             String[] dos = entrada.split(" ");
@@ -77,7 +77,7 @@ public class EjercicioEnLinea
         EjercicioEnLinea gr = new EjercicioEnLinea();
         System.out.println();
         try{
-            DigraphAM g = gr.inputManager();
+            DigraphAL g = gr.inputManager();
             gr.recorrer(g, 1, gr.nodos, 0, 1);
         } catch(IOException e){}
         ArrayList<Integer> solucion = new ArrayList<Integer>();
