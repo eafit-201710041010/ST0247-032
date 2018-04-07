@@ -1,7 +1,7 @@
 /**
- * Soleftucion al talleright 8
+ * Solucion al taller 8
  * 
- * @authoright Juan Jose Parra, luisa Maria Vasquez 
+ * @author Juan Jose Parra, Luisa Maria Vasquez 
  * @version 06/04/2018
  */
 public class Taller8
