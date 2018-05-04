@@ -8,7 +8,7 @@
 public class Taller12 {
     static int min;
     static int[] minTablero;
-    static int num = 500;
+    static int num = 5000;
     
     private static void imprimirTablero(int[] tablero) {
         int n = tablero.length;
@@ -46,12 +46,15 @@ public class Taller12 {
         
         int a = 0;
         
-        //Parar cuando los hijos no superen los padres
         while(!esValido(tablero) && a < num){
-            a++;
+            a++;            
             tablero = mirarCambios(tablero);
-            
-            System.out.println("Luisa");
+                                                        imprimirTablero(tablero);
+        }
+        if(esValido(tablero)) {
+            System.out.println("Tablero encontrado");
+        } else {
+            System.out.println("No se encontró solución, \nesto es lo mejor que pudo hacer");
         }
     }
     
@@ -59,14 +62,12 @@ public class Taller12 {
         int n = tablero.length;
         min = n*n;
         for(int r = 0; r < n; r++){
-            int[] copia = tablero.clone();
             for(int c = 0; c < n; c++){
+                int[] copia = tablero.clone();
                 copia[r] = c;
                 int numAtaques = ataques(copia);
                 
                 if(numAtaques < min){
-                                                            System.out.println(numAtaques);
-                                                            imprimirTablero(tablero);
                     min = numAtaques;
                     minTablero = copia;
                 }
