@@ -1,3 +1,5 @@
+package Entrega2;
+
 import java.util.Objects;
 
 /**

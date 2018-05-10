@@ -1,3 +1,5 @@
+package Entrega2;
+
 
 /**
  * Clase que representa los clientes y estaciones del mapa.
@@ -19,6 +21,4 @@ public class Node
         this.y=y;
         enRuta=false;
     }
-
-
 }

@@ -1,3 +1,5 @@
+package Entrega2;
+import java.util.ArrayList;
 
 /**
  * Abstract class for implementations of Digraphs
