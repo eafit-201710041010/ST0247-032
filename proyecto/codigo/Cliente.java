@@ -1,7 +1,6 @@
-package Entrega2;
 
 /**
- * Write a description of class Estacion here.
+ * Es como un nodo normal solo que permite diferenciarlo de estaciones sin necesidad de "tipo"
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -10,8 +9,8 @@ public class Cliente extends Node
 {
     Estacion estacionCercana;
     
-    public Cliente(char tipo,int x, int y, int id){
-        super(tipo,x,y,id);
+    public Cliente(int x, int y, int id){
+        super(x,y,id);
         
     }
     
