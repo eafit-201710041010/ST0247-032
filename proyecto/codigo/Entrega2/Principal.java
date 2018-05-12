@@ -10,15 +10,15 @@ import java.util.*;
  */
 public class Principal
 {
-    static  Hashtable<Integer,Node> lista = new Hashtable<Integer,Node>();
-    static int total;
+    Hashtable<Integer,Node> lista = new Hashtable<Integer,Node>();
+    int total;
 
-    public static void addNode(Node s){
+    public void addNode(Node s){
         lista.put(total,s);
         total++;
     }
 
-    public static DigraphAL getRuta(int inicio){
+    public DigraphAL getRuta(int inicio){
         ArrayList<Integer> parcial= new ArrayList();
         DigraphAL finall= new DigraphAL(total);
         parcial.add(inicio);
@@ -45,7 +45,7 @@ public class Principal
         return finall;
     }
 
-    public static void rutaAux(ArrayList<Integer> grupo, DigraphAL finall,int sig){
+    public void rutaAux(ArrayList<Integer> grupo, DigraphAL finall,int sig){
         int a =grupo.get(sig);
 
 
@@ -64,23 +64,24 @@ public class Principal
         }
     }
 
-    public static int distancia(Node a , Node b){
+    public int distancia(Node a , Node b){
         return (int)Math.hypot(a.x-b.x, a.y-b.y);
     }
     
     public static void main(String[] args){
+        Principal p = new Principal();
         Node a = new Node ("Estacion",0,0);
         Node a1 = new Node ("Cliente",10,10);
         Node a2 = new Node ("Estacion",40,40);
         Node a3 = new Node ("Cliente",20,20);
-        addNode(a);
-        addNode(a1);
-        addNode(a2);
-        addNode(a3);
-        DigraphAL rut = getRuta(0);
+        p.addNode(a);
+        p.addNode(a1);
+        p.addNode(a2);
+        p.addNode(a3);
+        DigraphAL rut = p.getRuta(0);
         rut.toString2();
-        for(int i =0;i<total;i++){
-            System.out.println(i+"  "+lista.get(i).tipo);
+        for(int i =0;i<p.total;i++){
+            System.out.println(i+"  "+p.lista.get(i).tipo);
         }
         
     }
