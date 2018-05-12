@@ -2,7 +2,13 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Clase que lee los datos necesarios para el cÃ¡lculo de la ruta optima
+ * Clase que lee los datos necesarios para el calculo
+ ->>Notica
+ - Crea un objeto que tiene como atributos una matriz de clientes , una de estaciones , el deposito y la info general
+ - Toda la informacion esta en este objeto y ese es con el de deberiamos trabjar en general.
+ 
+ Ingora la ultima parte que es solo imprimir todo lo que ya lei
+ 
  * @author Juan Jose Parra, Luisa Maria Vasquez
  * @version 17/05/2018
  */
