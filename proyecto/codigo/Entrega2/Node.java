@@ -9,16 +9,22 @@ package Entrega2;
  */
 public class Node
 {
-    String tipo;
+    char tipo;
     int x;
     int y;
+    int id;
     boolean enRuta;
 
-    public Node(String tipo,int x, int y)
+    public Node(char tipo,int x, int y, int id)
     {
         this.tipo=tipo;
         this.x=x;
         this.y=y;
+        this.id=id;
         enRuta=false;
+    }
+    
+    public char getTipo(){
+        return tipo;
     }
 }
