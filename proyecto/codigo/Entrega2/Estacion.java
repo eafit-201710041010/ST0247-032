@@ -18,4 +18,15 @@ public class Estacion extends Node
     public void addCliente(Cliente c){
         clientesCercanos.add(c);
     }
+    
+    /**
+     * Convierte lista de los cercanos de objeto a id
+     */
+    public ArrayList<Integer> getCercanos(){
+        ArrayList<Integer> cercanosConId = new ArrayList<Integer>();
+        for(Node n : clientesCercanos){
+            cercanosConId.add(n.getId());
+        }
+        return cercanosConId;
+    }
 }

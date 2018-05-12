@@ -27,4 +27,8 @@ public class Node
     public char getTipo(){
         return tipo;
     }
+    
+    public int getId(){
+        return id;
+    }
 }
