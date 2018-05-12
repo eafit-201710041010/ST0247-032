@@ -67,36 +67,12 @@ public class Principal
     public DigraphAL getRuta(int inicio){        
         DigraphAL finall= new DigraphAL(total);
         
-        /*
-        ArrayList<Integer> parcial= new ArrayList();
-        parcial.add(inicio);
-        
-        for(int i =0;i<total;i++){
-            if(lista.get(i).getTipo() == 'E'){
-                parcial.add(i);
-            } 
-        }
-        */
-       
         for(Node n : estaciones){
             Estacion e = (Estacion)n;
+            if(e.getCercanos().size() == 0) continue;
             rutaAux(e.getCercanos(), finall, 0);
         }
         
-        /*
-        for(int i = 0; i < parcial.size()-1; i++){
-            ArrayList<Integer> grupo = new ArrayList();
-            grupo.add(parcial.get(i));
-            for(int j=0;j<lista.size();j++){
-                //Si la distancia entre estaciones es menor a la distancia entre estación y cliente
-                if(distancia(lista.get(i),lista.get(i+1)) < distancia(lista.get(i),lista.get(j))){
-                    grupo.add(j);
-
-                }
-            }
-            grupo.add(i+1);
-            rutaAux(grupo,finall,0);
-        }*/
 
         return finall;
     }
@@ -138,7 +114,10 @@ public class Principal
         p.addNode(a1);
         p.addNode(a2);
         p.addNode(a3);
+        
         p.getCercanas();
+        
+
         DigraphAL rut = p.getRuta(0);
 
         rut.toString2();

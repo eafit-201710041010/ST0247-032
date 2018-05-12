@@ -24,8 +24,8 @@ public class Estacion extends Node
      */
     public ArrayList<Integer> getCercanos(){
         ArrayList<Integer> cercanosConId = new ArrayList<Integer>();
-        for(Node n : clientesCercanos){
-            cercanosConId.add(n.getId());
+        for(Cliente c : clientesCercanos){
+            cercanosConId.add(c.getId());
         }
         return cercanosConId;
     }
