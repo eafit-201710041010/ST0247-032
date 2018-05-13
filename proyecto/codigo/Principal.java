@@ -87,26 +87,36 @@ public class Principal
         }
     }
 
-    //Y aqui intente ... pero me toste
     public Set<Integer> rutaParcial(Leer mem, double Tmax, double cargaTotal, String[] estacion){
         Set<Integer> ruta = new HashSet<>();
+        int idEstacion = Integer.parseInt(estacion[0]);
         // Agrego el deposito
         ruta.add(0);
+        ruta.add(idEstacion);
+        
         //Valores iniciales
-        double tiempo=0.0;
-        double bateria=cargaTotal;
+        double tiempo = Tmax;
+        double bateria = cargaTotal;
+        
         // Busco cliente cercano
-        int clienteCercano=0;
-        double minDis=Integer.MAX_VALUE;
-        for(int i =1;i<mem.clientes.length;i++){
-            if(mem.disDep[i] < minDis && !mem.visitados[i]){
-                clienteCercano=i;
-                minDis= mem.disDep[i];
+        int clienteCercano = -1;
+        double minDis = Integer.MAX_VALUE;
+        for(int i = 1; i < mem.clientesDeEstacion(idEstacion).size(); i++){
+            if(mem.distanciaABodega(i) < minDis && !mem.visitados[i]){
+                clienteCercano = i;
+                minDis = mem.distanciaABodega(i);
             }
         }
+        
+        if(clienteCercano == -1){//no encontró clientes cercanos no visitados a la estacion
+            System.out.println("Esta estación no tiene más clientes cercanos por visitar");
+            return null;
+        }
+        
         //Resto lo que me gasto yendo hasta alla
-        tiempo= tiempo- 0.5 -mem.tyb[clienteCercano][0];
+        tiempo= tiempo- 0.5 - mem.tyb[clienteCercano][0];
         bateria= bateria - mem.tyb[clienteCercano][1];
+        
         // Y hasta aqui llegue
         //Porfa trata de usar las matrices como estan que si nos ponemos
         // a cambiar entre lo que ya hay y objetos no terminamos nunca

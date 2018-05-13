@@ -139,7 +139,46 @@ public class Leer {
         }
 
     }
+
+    /**
+     * Cambia en las matrices la información que dice que no ha sido visitado un cliente
+     */
+    public void visitar(int cliente){
+        visitados[cliente] = true;
         
+    }
+    
+    
+    /*IMPORTANTEE
+    Implementa porfa estos métodos que yo me pierdo con todas 
+    esas matrices o revisa que sí los haya implementado bien 
+    (devolviendo las variables que sí son y todo eso)
+    
+    El que hace el código es el que lo entiende mejor :)
+    */
+    /**
+     * Método que retorna los clientes cercanos a 
+     * la estación ingresada como parámetro
+     */
+    public Set<Integer> clientesDeEstacion(int estacion){
+        return null;
+    }
+    
+    /**
+     * Devuelve distancia a depósito del nodo ingresado
+     */
+    public double distanciaABodega(int nodo){
+        return disDep[nodo];
+    }
+    
+    /**
+     * Devuelve distancia a estación cercana del nodo ingresado
+     */
+    public double distanciaAEstacion(int nodo){
+        //No sé donde se guarda esta info
+        return 0;
+    }
+    
     //EMPIEZA AQUI
     public static void main(String[] args) throws FileNotFoundException, IOException{ 
 
@@ -184,8 +223,7 @@ public class Leer {
             }
             System.out.println("\n");
         }
-        System.out.println(cumple==320?"Yei":"Sorry"); // Si quedaron asignados todos
-        System.out.println(a.info[9][1]);
+        //System.out.println(cumple==320?"Yei":"Sorry"); // Si quedaron asignados todos
     }
 }
 
