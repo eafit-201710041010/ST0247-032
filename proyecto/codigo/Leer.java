@@ -145,7 +145,6 @@ public class Leer {
      */
     public void visitar(int cliente){
         visitados[cliente] = true;
-        
     }
     
     
@@ -163,19 +162,44 @@ public class Leer {
     public Set<Integer> clientesDeEstacion(int estacion){
         return null;
     }
-    
     /**
-     * Devuelve distancia a depósito del nodo ingresado
+     * Devuelve tiempo a bodega del nodo ingresado
      */
-    public double distanciaABodega(int nodo){
-        return disDep[nodo];
+    public double tiempoABodega(int estacion){
+        return tyb[estacion+324][0];
     }
-    
     /**
-     * Devuelve distancia a estación cercana del nodo ingresado
+     * Devuelve batería a bodega del nodo ingresado
      */
-    public double distanciaAEstacion(int nodo){
-        //No sé donde se guarda esta info
+    public double cargaABodega(int estacion){
+        return tyb[estacion+324][1];
+    }
+    /**
+     * Devuelve el tiempo que tarda en ir del cliente origen al cliente destino
+     */
+    public double tiempoEntreClientes(int origen, int destino){
+        //¿?
+        return 0;
+    }
+    /**
+     * Devuelve el tiempo que tarda en ir del cliente a estacion mas cercana
+     */
+    public double tiempoAEstacion(int cliente){
+        //¿?
+        return 0;
+    }
+    /**
+     * Devuelve la batería que consume en ir del cliente origen al cliente destino
+     */
+    public double cargaEntreClientes(int origen, int destino){
+        //¿?
+        return 0;
+    }
+    /**
+     * Devuelve la batería que consume en ir del cliente a estacion mas cercana
+     */
+    public double cargaAEstacion(int cliente){
+        //¿?
         return 0;
     }
     
