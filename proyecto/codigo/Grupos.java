@@ -13,10 +13,7 @@ import java.lang.*;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
-/**
- *
- * @author luisa
- */
+
 public class Grupos {
     Map<Triplet<Integer,Integer,Double>,Set<Integer>> mapa ; // limites con set de nodos a recorrer
     Set<Triplet<Integer,Integer,Double>> grupos; // Cada pareja tiene los limites de distancia al deposito
