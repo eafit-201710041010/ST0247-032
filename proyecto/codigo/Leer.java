@@ -64,6 +64,11 @@ public class Leer {
      * Arreglo que guarda el tiempo de carga completa de cada estación
      */
     double[] timePerEsta;
+    
+    /**
+     * Máximo de carga adquirida en estación
+     */
+    double maxCarga;
 
     /**
      * Constructor del objeto que tendrá toda la información del set de datos
@@ -75,21 +80,19 @@ public class Leer {
      * @param tot Total de nodos
      */
     public Leer(String[][] info, int n, int s, String[] depot, int tot) {
-
-        //Voy a expliar nombres
-        clixesta = new HashMap<>();  //Clientes por estacion
-        this.info = info; //Informaicon del comienzo
-        clientes = new String[n][6]; //A prueba de bobos
-        estaciones = new String[s][6]; //A prueba de bobos
-        deposito = depot; //A prueba de bobos
-        disDep = new double[tot]; //Distancia al deposito
-        disDep[0] = 0; //Distancia del deposito al deposito es 0 , duh
-        tyb = new double[tot][2]; // Tiempo y bateria
-        cercana = new int[n]; // Estacion de carga ams cercana
-        visitados = new boolean[n]; // A prueba de bobos
-        rutas = new HashSet<>(); // Rutas que vamos a generar
-        timeCharge = new double[3]; //Posibles tiempos que se demora cargando
-        timePerEsta = new double[s]; // Tiempo en carga completa por estacion
+        clixesta = new HashMap<>();  
+        this.info = info; 
+        clientes = new String[n][6]; 
+        estaciones = new String[s][6]; 
+        deposito = depot; 
+        disDep = new double[tot]; 
+        disDep[0] = 0; 
+        tyb = new double[tot][2]; 
+        cercana = new int[n]; 
+        visitados = new boolean[n]; 
+        rutas = new HashSet<>(); 
+        timeCharge = new double[3]; 
+        timePerEsta = new double[s]; 
 
     }
 
@@ -164,7 +167,7 @@ public class Leer {
             String linea2 = lector.readLine();
 
             String[] arr = linea2.split(" ");
-            timeCharge[tc] = Double.parseDouble(arr[3]);
+            timeCharge[tc] = Double.parseDouble(arr[1]);
         }
         for (int ts = 0; ts < estaciones.length; ts++) {
             if (estaciones[ts][5].equals("0")) {
@@ -176,6 +179,15 @@ public class Leer {
             }
 
         }
+        
+        for (int t = 0; t < 3; t++) {
+            lector.readLine();
+        }
+        
+        String add = lector.readLine();
+        
+        String arr2[] = add.split(" ");
+         maxCarga=Double.parseDouble(arr2[1]);
 
     }
 
@@ -312,7 +324,7 @@ public class Leer {
 
                     if (a.get(i) == 0 && i + 1 != a.size()) {
                         System.out.print(a.get(i) + "(0 h) ,");
-                    } else if (a.get(i) <= Integer.parseInt(info[1][1]) && a.get(i - 1) <= Integer.parseInt(info[1][1])) {
+                    } else if (a.get(i) <= Integer.parseInt(info[1][1]) && a.get(i - 1) <= Integer.parseInt(info[1][1]) && a.get(i)!=0) {
                         System.out.print(a.get(i) + "(" + (df.format(0.5 + tiempoEntreClientes(a.get(i), a.get(i - 1)))) + " h) ");
                     } else if (a.get(i) <= Integer.parseInt(info[1][1]) && a.get(i - 1) > Integer.parseInt(info[1][1]) && a.get(i) != 0) {
                         System.out.print(a.get(i) + "(" + df.format(0.5 + tiempoAEstacion(a.get(i))) + " h) ");
@@ -331,6 +343,73 @@ public class Leer {
         }
 
     }
+    
+    /**
+     * Método que calcula el tiempo total de las rutas, la ruta más demorada y la más breve
+     */
+    public void tiempoTotal() {
+        double maxDemore=0;
+        double minDemore=Integer.MAX_VALUE;
+        double tot=0;
+        int rutaM =0;
+        int rutaMin=0;
+        int ruta =1;
+        for (ArrayList<Integer> a : rutas) {
+            
+             double demoreParcial=0;
+            for (int i = 0; i < a.size(); i++) {
+               
+                if (a.size() == 4) {
+
+                    if (a.get(i) == 0 && i + 1 != a.size()) {
+                        demoreParcial+=0;
+                    } else if (a.get(i) > Integer.parseInt(info[1][1])) {
+                        demoreParcial+=tiempoABodega(a.get(i)) + 1.54;
+                    } else if (a.get(i) <= Integer.parseInt(info[1][1]) && a.get(i) != 0) {
+                        demoreParcial+=tiempoAEstacion(a.get(i)) + 0.5;
+                    } else if (a.get(i) == 0 && i + 1 == a.size()) {
+                        demoreParcial+=tiempoABodega(a.get(i - 1));
+                    }
+
+                }
+                if (a.size() > 4) {
+
+                    if (a.get(i) == 0 && i + 1 != a.size()) {
+                        demoreParcial+=0;
+                    } else if (a.get(i) <= Integer.parseInt(info[1][1]) && a.get(i - 1) <= Integer.parseInt(info[1][1]) && a.get(i )!=0) {
+                        demoreParcial+=0.5 + tiempoEntreClientes(a.get(i), a.get(i - 1));
+                    } else if (a.get(i) <= Integer.parseInt(info[1][1]) && a.get(i - 1) > Integer.parseInt(info[1][1]) && a.get(i) != 0) {
+                        demoreParcial+=0.5 + tiempoAEstacion(a.get(i));
+                    } else if (a.get(i) > Integer.parseInt(info[1][1]) && a.get(i - 1) <= Integer.parseInt(info[1][1]) && a.get(i - 1) != 0) {
+                        demoreParcial+=timePerEsta[a.get(i) - Integer.parseInt(info[1][1]) - 1] + tiempoAEstacion(a.get(i - 1));
+                    } else if (a.get(i) > Integer.parseInt(info[1][1]) && a.get(i - 1) == 0) {
+                        demoreParcial+= timePerEsta[a.get(i) - Integer.parseInt(info[1][1]) - 1] + tiempoABodega(a.get(i));
+                    } else {
+                        demoreParcial+= tiempoABodega(a.get(i - 1));
+                    }
+                }
+
+            }
+            if(demoreParcial>maxDemore){
+                maxDemore=demoreParcial;
+                rutaM=ruta;
+            }
+            if(demoreParcial<minDemore){
+                minDemore=demoreParcial;
+                rutaMin=ruta;
+            }
+            if(demoreParcial >10){
+                System.out.println("La ruta "+ruta+" se demora más de 10 h");
+            
+            }
+            tot+=demoreParcial;
+            ruta++;
+        }
+
+        System.out.println("La ruta más larga ("+rutaM+") es de: "+maxDemore+ " h ");
+        System.out.println("La ruta más corta ("+rutaMin+") es de: "+minDemore+ " h ");
+        System.out.println("Total de horas: "+tot+ " h ");
+    }
 
     
 
@@ -343,7 +422,7 @@ public class Leer {
         long startTime = System.currentTimeMillis();
 
         String[][] iniciales = new String[10][2];
-        BufferedReader lector = new BufferedReader(new FileReader("set1.txt"));
+        BufferedReader lector = new BufferedReader(new FileReader("set10.txt"));
         for (int i = 0; i < 10; i++) {
             String linea = lector.readLine();           
             if (linea != null) {
@@ -358,14 +437,16 @@ public class Leer {
         String[] depos = linea.split(" ");
         Leer a = new Leer(iniciales, clientes + 1, Integer.parseInt(iniciales[2][1]), depos, Integer.parseInt(iniciales[0][1]));
 
-        a.llenarInfo("set1.txt");
+        a.llenarInfo("set10.txt");
 
         Principal p = new Principal();
         p.getCercanas(a);
         Principal.rutas(a);
         a.imprimirRutas2();
+        System.out.println("");
+        a.tiempoTotal();
         long endTime =  System.currentTimeMillis() - startTime;
-        
+        System.out.println("");
         System.out.println("Tiempo empleado:"+endTime + " ms");
 
     }
